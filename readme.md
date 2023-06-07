@@ -2,7 +2,16 @@
 
 Fork of https://github.com/msikma/pokesprite where:
 
-- all existing sprites in the `pokemon-gen8` directory have been trimmed according to the procedure in [martimlobao's fork](https://github.com/martimlobao/pokesprite); and
+- all existing sprites in the `pokemon-gen8` and `items/ball` directories have been trimmed according to the procedure in [martimlobao's fork](https://github.com/martimlobao/pokesprite):
+
+```python
+import os
+for fname in os.listdir('.'):
+    if fname.endswith('png'):
+        os.system(f'convert {fname} -trim +repage {fname}')
+        os.system(f'convert {fname} -bordercolor transparent -border 3 {fname}')
+```
+
 - regular (i.e. non-shiny) Gen 9 sprites have been added into the `pokemon-gen8/regular` directory.
   - Gen 9 sprites are taken from: https://www.deviantart.com/nolo33lp/art/Pokemon-Scarlet-and-Violet-front-and-icon-sprites-942959329
   - Separation of the original image into individual sprites for each Pokemon uses this script. The original image (downloaded from link above) should be saved as `sv_all.png`.
